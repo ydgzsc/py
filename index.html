@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025南漳县卞和小学英语配音六（2）班</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: #e6f2ff; /* 浅蓝色背景 */
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 30px 0;
+        }
+
+        .header {
+            padding: 25px;
+            text-align: center;
+            background: linear-gradient(135deg, #4a8fe7, #6bb9f0);
+            color: white;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            gap: 30px;
+        }
+
+        .video-item {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-title {
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            background-color: #f1f8ff;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 宽高比 */
+            height: 0;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #4a8fe7, #6bb9f0);
+            color: white;
+            font-size: 14px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .video-item {
+                min-width: 100%;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>2025南漳县卞和小学英语配音六（2）班</h1>
+        </header>
+        
+        <main class="video-row">
+            <div class="video-item">
+                <div class="video-title">功夫熊猫1</div>
+                <div class="video-container">
+                    <video controls poster="thumbnail1.jpg">
+                        <source src="2.mp4" type="video/mp4">
+                        您的浏览器不支持视频标签。
+                    </video>
+                </div>
+            </div>
+            
+            <div class="video-item">
+                <div class="video-title">心灵奇遇</div>
+                <div class="video-container">
+                    <video controls poster="thumbnail2.jpg">
+                        <source src="3.mp4" type="video/mp4">
+                        您的浏览器不支持视频标签。
+                    </video>
+                </div>
+            </div>
+            
+            <div class="video-item">
+                <div class="video-title">小马宝莉</div>
+                <div class="video-container">
+                    <video controls poster="thumbnail3.jpg">
+                        <source src="4.mp4" type="video/mp4">
+                        您的浏览器不支持视频标签。
+                    </video>
+                </div>
+            </div>
+            
+            <div class="video-item">
+                <div class="video-title">哪吒之魔童降世</div>
+                <div class="video-container">
+                    <video controls poster="thumbnail4.jpg">
+                        <source src="1.mp4" type="video/mp4">
+                        您的浏览器不支持视频标签。
+                    </video>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; <span id="year"></span> 版权归 云顶工作室（陈飞鸣）卞和小学六（2）班 喜马拉雅文化传媒 九韵文化传媒 所有.保留所有权利.</p>
+        </footer>
+    </div>
+
+    <script>
+        // 自动更新版权年份
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // 视频懒加载功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoItems = document.querySelectorAll('.video-item');
+            
+            const lazyLoad = (item) => {
+                const video = item.querySelector('video');
+                const sources = video.querySelectorAll('source');
+                
+                sources.forEach(source => {
+                    source.src = source.getAttribute('data-src');
+                });
+                
+                video.load();
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        lazyLoad(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            videoItems.forEach(item => {
+                observer.observe(item);
+                // 先将src保存到data-src，然后清空src
+                const video = item.querySelector('video');
+                const sources = video.querySelectorAll('source');
+                sources.forEach(source => {
+                    source.setAttribute('data-src', source.src);
+                    source.removeAttribute('src');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
